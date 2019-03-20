@@ -1,0 +1,20 @@
+{
+    "name": "vilys/1nd",
+    "description": "NFQ akademija. Intro into php part 1. Homework",
+    "type": "Project",
+    "require": {
+        "monolog/monolog": "^1.24.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5.7"
+    },
+    "authors": [
+        {
+            "name": "AurimasVilys",
+            "email": "aurimas.vilys.96@gmail.com"
+        }
+    ],
+    "autoload" : {
+        "files": ["src/functions.php", "src/functions_strict.php"]
+    }
+}
