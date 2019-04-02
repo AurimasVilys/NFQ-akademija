@@ -1,28 +1,28 @@
 :root {
-    /*Font varialbes*/
+    /*Font variables*/
     --fontFamilyDefault: 'Open Sans',Arial,sans-serif;
     --fontFamilyBold: 'Open Sans Bold',Arial,sans-serif;
     --fontSizeDefault: 12px;
 
-    /*Color varialbes*/
+    /*Color variables*/
     --colorBlue: rgb(0, 110,163);
     --colorGrey: rgb(67, 67, 67);
     --colorRed: rgb(255, 0,0);
     --colorGreen: rgb(0, 143,47);
     --colorWhite: rgb(255,255,255);
 
-    /*Border radius varialbes*/
+    /*Border radius variables*/
     --borderRadius: 5px;
 
-    /*Notification component varialbes*/
+    /*Notification component variables*/
     --Notification-margin: 50px;
     --Notification-border-width: 1px 35px 1px 1px;;
     --Notification-padding: 5px 15px;
 
-    /*Button component varialbes*/
+    /*Button component variables*/
     --Button-padding: 10px;
 
-    /*Footer component varialbes*/
+    /*Footer component variables*/
     --Footer-height: 30px;
     --Footer-padding-left: 50px;
     --Footer-padding-right: 50px;
