@@ -1,52 +1,85 @@
-.notification {
-    box-sizing: border-box;
-    width: 50%;
-    margin: 4% 25%;
+:root {
+    /*Font varialbes*/
+    --fontFamilyDefault: 'Open Sans',Arial,sans-serif;
+    --fontFamilyBold: 'Open Sans Bold',Arial,sans-serif;
+    --fontSizeDefault: 12px;
+
+    /*Color varialbes*/
+    --colorBlue: rgb(0, 110,163);
+    --colorGrey: rgb(67, 67, 67);
+    --colorRed: rgb(255, 0,0);
+    --colorGreen: rgb(0, 143,47);
+    --colorWhite: rgb(255,255,255);
+
+    /*Border radius varialbes*/
+    --borderRadius: 5px;
+
+    /*Notification component varialbes*/
+    --Notification-margin: 50px;
+    --Notification-border-width: 1px 35px 1px 1px;;
+    --Notification-padding: 5px 15px;
+
+    /*Button component varialbes*/
+    --Button-padding: 10px;
+
+    /*Footer component varialbes*/
+    --Footer-height: 30px;
+    --Footer-padding-left: 50px;
+    --Footer-padding-right: 50px;
+}
+
+body {
+    font-family: var(--fontFamilyDefault);
+    font-size: var(--fontSizeDefault);
+}
+
+.Notification {
+    margin: var(--Notification-margin);
     border-style: solid;
-    border-width: 1px 35px 1px 1px;
-    border-radius: 5px;
-    padding: 1%;
+    border-width: var(--Notification-border-width);
+    border-radius: var(--borderRadius);
+    padding: var(--Notification-padding);
 }
 
-.notification--error {
-    border-color: rgb(255, 0,0);
+.Notification--error {
+    border-color: var(--colorRed);
+}
+.Notification--success {
+    border-color: var(--colorGreen);
 }
 
-.notification--success {
-    border-color: rgb(0, 143,47);
-}
-
-.notification-header {
-    font-family: 'Open Sans Bold',Arial,sans-serif;
-    font-size: 12px;
-    color: rgb(51, 51, 51);
+.Notification-header {
+    color: var(--colorGrey);
+    font-family: var(--fontFamilyBold);
     font-weight: bold;
 }
 
-.notification-body {   
-    font-family: 'Open Sans',Arial,sans-serif;
-    font-size: 12px;
-    color: rgb(51, 51, 51);
+.Notification-body {   
+    color: var(--colorGrey);
 }
 
 .u-blueText {
-    color: rgb(0, 110,163);
+    color: var(--colorBlue);
     text-decoration: none;
 }
 
-.button {
-    float: right;
-    margin-right: 25%;
-    padding: 10px;
-}
-
-.button--primary {
-    background-color: rgb(0, 110,163);
-    border-radius: 5px;
-    color: white;
+.Button {
+    padding: var(--Button-padding);
+    background-color: var(--colorBlue);
+    border-radius: var(--borderRadius);
+    color: var(--colorWhite);
     text-decoration: none;
     text-transform: uppercase;
-    font-family: 'Open Sans Semi-Bold',Arial,sans-serif;
-    font-size: 12px;
+    font-family: var(--fontFamilyBold);
+    font-weight: bold;
 }
 
+.Footer {
+    height: var(--Footer-height);
+    padding-left: var(--Footer-padding-left);
+    padding-right: var(--Footer-padding-right);
+}
+
+.Footer-right {
+    text-align: right;
+}
