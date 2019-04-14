@@ -1,4 +1,19 @@
 {
+  "name": "vilys/php3homework",
+  "description": "NFQ akademija. PHP3 Homework",
+  "type": "Project",
+  "authors": [
+    {
+      "name": "AurimasVilys",
+      "email": "aurimas.vilys.96@gmail.com"
+    }
+  ],
+  "require": {
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "ext-json": "*"
+  },
   "autoload" : {
     "psr-4": {
       "Hotel\\": ["src/"]

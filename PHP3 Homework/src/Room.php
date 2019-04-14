@@ -2,7 +2,7 @@
 
 namespace Hotel;
 
-class Room implements ReservableInterface
+class Room implements ReservableInterface, \JsonSerializable
 {
     private $roomType;
     private $restroom;
@@ -13,13 +13,14 @@ class Room implements ReservableInterface
     private $reservations;
     private $price;
 
-    public function __construct()
+    public function __construct($roomNumber)
     {
         $this->reservations = array();
+        $this->roomNumber = $roomNumber;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getRoomType()
     {
@@ -27,7 +28,7 @@ class Room implements ReservableInterface
     }
 
     /**
-     * @param mixed $roomType
+     * @param string $roomType
      */
     public function setRoomType($roomType): void
     {
@@ -35,7 +36,7 @@ class Room implements ReservableInterface
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getRestroom(): bool
     {
@@ -43,7 +44,7 @@ class Room implements ReservableInterface
     }
 
     /**
-     * @param mixed $restroom
+     * @param bool $restroom
      */
     public function hasRestroom($restroom): void
     {
@@ -51,7 +52,7 @@ class Room implements ReservableInterface
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getBalcony(): bool
     {
@@ -59,7 +60,7 @@ class Room implements ReservableInterface
     }
 
     /**
-     * @param mixed $balcony
+     * @param bool $balcony
      */
     public function hasBalcony($balcony): void
     {
@@ -67,7 +68,7 @@ class Room implements ReservableInterface
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getBedCount(): int
     {
@@ -75,7 +76,7 @@ class Room implements ReservableInterface
     }
 
     /**
-     * @param mixed $bedCount
+     * @param int $bedCount
      */
     public function setBedCount($bedCount): void
     {
@@ -83,23 +84,16 @@ class Room implements ReservableInterface
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getRoomNumber(): int
     {
         return $this->roomNumber;
     }
 
-    /**
-     * @param mixed $roomNumber
-     */
-    public function setRoomNumber($roomNumber): void
-    {
-        $this->roomNumber = $roomNumber;
-    }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getExtras(): array
     {
@@ -107,7 +101,7 @@ class Room implements ReservableInterface
     }
 
     /**
-     * @param mixed $extras
+     * @param array $extras
      */
     public function setExtras($extras): void
     {
@@ -115,7 +109,7 @@ class Room implements ReservableInterface
     }
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getReservations(): array
     {
@@ -123,7 +117,7 @@ class Room implements ReservableInterface
     }
 
     /**
-     * @param mixed $reservations
+     * @param array $reservations
      */
     public function setReservations($reservations): void
     {
@@ -155,8 +149,34 @@ class Room implements ReservableInterface
         return true;
     }
 
-    public function removeReservation($reservation){}
+    public function removeReservation($reservation)
+    {
+        $keyToRemove = array_search($reservation, $this->reservations);
+        if(isset($keyToRemove)) {
+            unset($this->reservations[$keyToRemove]);
+        }
+    }
 
-    public function addReservation($reservation){}
+    public function addReservation($reservation)
+    {
+        array_push($this->reservations, $reservation);
+    }
+
+    public function jsonSerialize()
+    {
+        return ['roomType' => $this->roomType,
+                'restroom' => $this->restroom,
+                'balcony' => $this->balcony,
+                'bedCount' => $this->bedCount,
+                'roomNumber' => $this->roomNumber,
+                'extras' => $this->extras,
+                'reservations' => $this->reservations,
+                'price' => $this->price];
+    }
+
+    public function __toString()
+    {
+        return json_encode($this->jsonSerialize());
+    }
 
 }

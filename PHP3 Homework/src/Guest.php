@@ -2,7 +2,7 @@
 
 namespace Hotel;
 
-class Guest
+class Guest implements \JsonSerializable
 {
 
     public function __construct($firstName, $lastName)
@@ -15,7 +15,7 @@ class Guest
     private $lastName;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getFirstName(): string
     {
@@ -23,7 +23,7 @@ class Guest
     }
 
     /**
-     * @param mixed $firstName
+     * @param string $firstName
      */
     public function setFirstName($firstName): void
     {
@@ -31,7 +31,7 @@ class Guest
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getLastName(): string
     {
@@ -39,7 +39,7 @@ class Guest
     }
 
     /**
-     * @param mixed $lastName
+     * @param string $lastName
      */
     public function setLastName($lastName): void
     {
@@ -52,5 +52,15 @@ class Guest
     public function getGuestFullName(): string {
         return $this->firstName.' '.$this->lastName;
     }
-    
+
+    public function jsonSerialize()
+    {
+        return ['firstName' => $this->firstName,
+            'lastName' => $this->lastName];
+    }
+
+    public function __toString()
+    {
+        return json_encode($this->jsonSerialize());
+    }
 }

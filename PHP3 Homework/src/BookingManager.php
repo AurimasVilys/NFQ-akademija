@@ -14,8 +14,8 @@ class BookingManager
             echo PHP_EOL;
         }
         else {
-            throw new ReservationException('Room <strong>'.$room->getRoomNumber().'</strong> is not available from <time>'.
-                $reservation->getStarDate()->getTimestamp().'</time> to <time>'.$reservation->getEndDate()->getTimestamp().'</time>!');
+            throw new ReservationException('Room '.$room->getRoomNumber().' is not available from '.
+                $reservation->getStarDate()->format('Y-m-d').' to '.$reservation->getEndDate()->format('Y-m-d').'!');
         }
     }
 }

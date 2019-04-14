@@ -2,7 +2,7 @@
 
 namespace Hotel;
 
-class Reservation
+class Reservation implements \JsonSerializable
 {
     public function __construct($starDate, $endDate, $guest)
     {
@@ -16,7 +16,7 @@ class Reservation
     private $guest;
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getStarDate() : \DateTime
     {
@@ -24,7 +24,7 @@ class Reservation
     }
 
     /**
-     * @param mixed $starDate
+     * @param \DateTime $starDate
      */
     public function setStarDate($starDate): void
     {
@@ -32,7 +32,7 @@ class Reservation
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getEndDate(): \DateTime
     {
@@ -40,7 +40,7 @@ class Reservation
     }
 
     /**
-     * @param mixed $endDate
+     * @param \DateTime $endDate
      */
     public function setEndDate($endDate): void
     {
@@ -56,12 +56,23 @@ class Reservation
     }
 
     /**
-     * @param mixed $guest
+     * @param Guest $guest
      */
     public function setGuest($guest): void
     {
         $this->guest = $guest;
     }
 
+    public function jsonSerialize()
+    {
+        return ['starDate' => $this->starDate,
+            'endDate' => $this->endDate,
+            'guest' => $this->guest];
+    }
+
+    public function __toString()
+    {
+        return json_encode($this->jsonSerialize());
+    }
 
 }
